@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reggies Eddington | CS Portfolio</title>
+    <style>
+        /* --- GLOBAL STYLES & RESETS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0a2564; /* Modern dark slate background */
+            color: #cbd5e1; /* Soft readable text */
+            line-height: 1.6;
+            padding-top: 80px; /* Enhanced space below fixed navigation bar */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px; /* Better vertical breathing room between sections */
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #f8fafc;
+            margin-bottom: 30px; /* Increased spacing beneath section headings */
+            border-bottom: 2px solid #c12121;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 40px; /* Added spacing above subheadings like Skills Box */
+            margin-bottom: 20px;
+            color: #f8fafc;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            background-color: #1e293b;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8; 
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 25px; /* Slightly wider spacing between nav links */
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* --- HERO SECTION WITH PICTURE --- */
+        .hero-section {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Keeps perfectly proportioned spaces between img, text, and buttons */
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* Makes your picture perfectly circular */
+            border: 4px solid #38bdf8; /* Modern blue glowing ring border */
+            object-fit: cover; /* Prevents your picture from stretching out of proportion */
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: #f8fafc;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #38bdf8;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0ea5e9;
+            transform: translateY(-3px);
+        }
+
+        /* --- ABOUT SECTION & SKILLS --- */
+        .about-content {
+            background-color: #1e293b;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; /* Better gaps inside the skills section boxes */
+        }
+
+        .skill-category {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+        }
+
+        .skill-category h4 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; /* Clean spacing between project layout blocks */
+        }
+
+        .project-card {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .project-card h3 {
+            margin-top: 0; /* Reset margins within specific cards */
+            color: #f8fafc;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .tech-stack {
+            display: inline-block;
+            font-size: 0.8rem;
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-p {
+            margin-bottom: 30px; /* Pushes the social button grid lower down */
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            border: 2px solid #334155;
+            color: #f8fafc;
+            padding: 12px 22px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        /* --- SOCIAL BRAND HOVER COLOR EFFECTS --- */
+        .contact-btn:hover { background-color: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+        .whatsapp-btn:hover { background-color: #25D366; color: #fff; border-color: #25D366; }
+        .x-btn:hover { background-color: #000000; color: #fff; border-color: #ffffff; }
+        .insta-btn:hover { background-color: #E1306C; color: #fff; border-color: #E1306C; }
+        .fb-btn:hover { background-color: #1877F2; color: #fff; border-color: #1877F2; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">RE.Dev</div>
+            <ul class="nav-links">
+                <li><a href="#HOME">Contact</a></li>
+                <li><a href="#ABOUT">About</a></li>
+                <li><a href="#PROJECTS">Projects</a></li>
+                <li><a href="#CONTACT">Contact</a></li>
+                <li><a href="#SKILLS">skills</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <!-- Profile Image Linked From Your Images Folder -->
+            <img src="images/profile.jpg" alt="Reggies Mahuda" class="profile-img">
+            <h1>Hi, I'm <span class="highlight">Reggies Mahuda </span></h1>
+            <p>Computer Science Student Year 2 & IT Specialist</p>
+            <p>I CAN DRIVE YOU ANYWHERE IN TECH FIELD , we dive!!</p>
+            <a href="#projects" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I am a level 2 Computer Science student at <strong>Midlands State University</strong> Gweru ,Zimbabwe . I like discovering how technology works and building logical software solutions. I am currently busy studying computer engineering principles, programming syntax, and algorithmic logic architectures.</p>
+        </div>
+
+        <h3>My Technical Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Languages</h4>
+                <p>Python, Java, HTML5, CSS3</p>
+            </div>
+            <div class="skill-category">
+                <h4>Tools & Environment</h4>
+                <p>Visual Studio Code, Git, GitHub, Windows</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>My Academic Projects</h2>
+        <div class="project-grid">
+            
+            <!-- Project Card 1 -->
+            <div class="project-card">
+                <h3>Console Application</h3>
+                <p>A basic structural programming algorithm utilizing core data principles to sort data sets and manage mock records efficiently.</p>
+                <span class="tech-stack">Python / C++</span>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card">
+                <h3>Personal Static Web Application</h3>
+
+        <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <p class="contact-p">I'm eager to connect for industry student assignments, code collaborations, technological growth discussions so i can bring ideas to real world solutions.</p>
+        
+        <div class="contact-links">
+            <!-- Your Real Professional Email Address -->
+            <a href="mailto:mahudareggie@gmail.com" class="contact-btn">Email Me</a>
+            
+            <!-- Your Real GitHub Profile Link -->
+            <a href="https://github.com" target="_reggiesmahuda" class="contact-btn">GitHub</a>
+            
+            <!-- Your Real LinkedIn Profile Link -->
+            <a href="https://linkedin.com" target="_reggies mahuda" class="contact-btn">LinkedIn</a>
+            
+            <!-- Your Real Social Links -->
+            <a href="https://wa.me/263780115542" target="_blank" class="contact-btn whatsapp-btn">WhatsApp</a>
+            <a href="https://x.com/reggies mahuda" target="_blank" class="contact-btn x-btn">X / Twitter</a>
+            <a href="https://instagram.com/reggies mahuda "target="_blank" class="contact-btn insta-btn">Instagram</a>
+            <a href="https://facebook.com/reggies mahuda" target="_blank" class="contact-btn fb-btn">Facebook</a>
+        
+    </footer>    
+
+ <p>&copy; 2026 Reggies Mahuda.</p>
+    
+    </section>
+            
